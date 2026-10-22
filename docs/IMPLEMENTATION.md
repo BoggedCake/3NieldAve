@@ -64,4 +64,4 @@ Screenshots and print output default to `/tmp/fern-qa`; set `FERN_QA_OUTPUT` to 
 
 Chromium's trust store in this cloud instance does not recognise the HTTPS proxy CA for Google Fonts. The QA harness obtains those font responses through system `curl`, which validates TLS and returns the verified font bytes to the browser. It never disables TLS validation. The same font responses are used for both baseline and enhanced pages; real loaded Poppins faces are asserted. This adjustment is confined to QA and does not alter production font URLs.
 
-The feature branch is `feat/fern-finishes-shore`. No merge or deployment is authorised or performed. PR creation requires GitHub API access; HTTPS Git read/push access alone does not establish that capability.
+The feature branch is `feat/fern-finishes-shore`, submitted as [draft PR #1](https://github.com/BoggedCake/3NieldAve/pull/1). No merge or deployment is authorised or performed. Initial REST connectivity failures did not prevent the later authenticated PR creation; see `QA.md`.

@@ -37,8 +37,8 @@ Full-page, materials, partner and framing screenshots for all six widths are ret
 - The only mobile layout defect found in the recovered baseline was the three-column overview grid overflowing at 375 pixels. It now uses two shrinkable columns on mobile. No overflow remains in the tested widths.
 - The repository has no build toolchain, lint command or prior automated suite. `node tests/qa.cjs` is the relevant functional and visual suite; no unrun build is represented as passing.
 
-## Delivery limitation
+## Delivery
 
-HTTPS Git fetch/push works. GitHub API access does not: the egress proxy rejects HTTPS CONNECT to `api.github.com` with HTTP 403 before PR creation. An additive network draft allowing that exact hostname was saved while preserving existing custom rules. That draft does not change runtime access until saved/applied through environment settings and published as required by the product. No new token has been requested; Git authentication already works.
+HTTPS Git fetch/push works. Initial REST connectivity checks to `api.github.com` were rejected by the egress proxy with HTTP 403. An additive network draft allowing that exact hostname was saved while preserving existing custom rules. Despite those REST failures, the subsequent authenticated `gh pr create` operation succeeded using the existing platform authentication; no new token was requested. The earlier REST result was therefore not treated as proof that all PR operations were unavailable.
 
-The complete PR title/body is prepared in [PR_DESCRIPTION.md](PR_DESCRIPTION.md). Founder review can use the pushed feature branch and its GitHub compare page while API access is resolved. Nothing has been merged or deployed.
+Draft pull request: [#1](https://github.com/BoggedCake/3NieldAve/pull/1), from `feat/fern-finishes-shore` into `main`. The complete PR title/body is retained in [PR_DESCRIPTION.md](PR_DESCRIPTION.md). Nothing has been merged or deployed. The optional network draft is separate from application delivery; if retained, review/save it in environment settings and publish the environment configuration as required by the product.
