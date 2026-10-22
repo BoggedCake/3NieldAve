@@ -58,6 +58,26 @@ async function run() {
       await before.goto(url + '/__baseline', { waitUntil: 'networkidle' });
       await page.goto(url + '/__standalone/preview.html', { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);
+      const portrait = page.locator('.footer-agent img.agent-headshot');
+      assert.equal(await portrait.count(), 1, 'Chris Lewis portrait must be present inside his contact section');
+      assert.equal(await portrait.isVisible(), true, 'Portrait must be visible');
+      await portrait.scrollIntoViewIfNeeded();
+      const headshot = await portrait.evaluate(async i => {
+        await i.decode();
+        const r = i.getBoundingClientRect(), details = document.querySelector('.footer-agent-copy').getBoundingClientRect(), footer = i.closest('.footer-top').getBoundingClientRect();
+        const centre = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+        return {src:i.getAttribute('src'), alt:i.alt, decoded:i.complete && i.naturalWidth > 0, natural:[i.naturalWidth,i.naturalHeight], width:r.width,height:r.height, beside:r.right <= details.left, above:r.bottom <= details.top, contained:r.left >= footer.left && r.right <= footer.right && r.top >= footer.top && r.bottom <= footer.bottom, unobscured:centre === i};
+      });
+      assert.equal(headshot.decoded, true);
+      assert.equal(headshot.unobscured, true, 'Portrait must not be covered by another element');
+      assert.equal(headshot.contained, true);
+      assert.equal(headshot.alt, 'Chris Lewis, Exclusive Agent');
+      assert.deepEqual(headshot.natural, [840,1050]);
+      assert.ok(headshot.src.startsWith('data:image/jpeg;base64,'), 'Portrait must survive HTML-only preview packaging');
+      assert.equal(createHash('sha256').update(Buffer.from(headshot.src.split(',')[1],'base64')).digest('hex'), checksums['FERN_Chris_Lewis_Headshot_Web.jpg'], 'Embedded portrait must be the unchanged supplied web JPEG');
+      assert.ok(Math.abs(headshot.width / headshot.height - 0.8) < 0.001, 'Preserve natural 4:5 proportions');
+      if (width >= 768) { assert.ok(headshot.width >= 150 && headshot.width <= 190); assert.equal(headshot.beside,true); }
+      else { assert.ok(headshot.width >= 120 && headshot.width <= 150); assert.equal(headshot.above,true); }
       assert.equal(await page.locator('img.shore-logo').count(), 1, 'Official supplied SHORE artwork must replace the text approximation');
       const logoSource = await page.locator('img.shore-logo').getAttribute('src');
       assert.ok(logoSource.startsWith('data:image/jpeg;base64,'), 'The exact logo must also work in HTML-only previews');
@@ -173,7 +193,7 @@ async function run() {
       assert.deepEqual(failedRequests.filter(r => !/fonts\.(googleapis|gstatic)\.com/.test(r.url)), [], 'No failed application asset requests');
       const metrics = await page.evaluate(() => ({fontLoaded:[...document.fonts].some(f => f.family === 'Poppins' && f.status === 'loaded'), domElements:document.querySelectorAll('*').length, loadMs:performance.getEntriesByType('navigation')[0].loadEventEnd}));
       assert.equal(metrics.fontLoaded, true, 'Real Poppins font faces must load through verified TLS');
-      results.push({width, status:'passed', categories:reference.length, inclusions:reference.reduce((n,c)=>n+c.items.length,0), images:images.length, unchangedSections:unchanged, errors, failedRequests, ...metrics});
+      results.push({width, status:'passed', headshot:{visible:true,decoded:headshot.decoded,unobscured:headshot.unobscured,width:headshot.width,height:headshot.height,position:headshot.beside?'beside contact':'above contact'}, categories:reference.length, inclusions:reference.reduce((n,c)=>n+c.items.length,0), images:images.length, unchangedSections:unchanged, errors, failedRequests, ...metrics});
       console.log(JSON.stringify(results.at(-1)));
       if (width === 1440) {
         await page.emulateMedia({media:'print'});

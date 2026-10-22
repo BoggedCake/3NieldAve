@@ -26,16 +26,22 @@ All visible builder references, including the logo's accessible description, use
 
 The cover statistic, executive-summary statistic and construction paragraph now use **Q2 2027**. There are no Q1 2027 or December 2026 completion references in the current IM. Historical source records and unchanged supplied documents are retained as evidence rather than rewritten.
 
-## Headshot — awaiting usable source file
+## Headshot — supplied and implemented
 
-The requested photo is visible in the earlier conversation, and the latest request names `FERN_Chris_Lewis_Headshot.jpg`, but neither message supplies a downloadable file identifier or workspace image for it. The attachment directories contain the earlier schedule, brief and ZIP assets; neither the current checkout nor fetched remote branch contains the headshot. The exact JPEG/PNG has been requested. No substitute, generated portrait or broken placeholder has been added. The existing footer and contact details are preserved pending that file.
+The original and web JPEGs were extracted from `FERN_Headshot_Codex_Fix.zip` into `/workspace/fern-review/headshot-supplied`, then opened and verified as valid JPEGs. The original is 1122 × 1402 pixels, SHA-256 `69b4c594d0ff919bf61c3a0b9210af428fda938523464b924a7c02265a3d9195`. The supplied web copy is 840 × 1050 pixels, SHA-256 `451657dbd11aedcb414bc65042146468297b6fb5e9546fd95f9689fb4c168f27`.
 
-When supplied, add the exact image to the existing agent contact area at a restrained portrait size, using CSS cropping and responsive spacing. Re-run the six-width checks, capture the contact area and update this report before claiming the headshot requirement complete.
+The exact web JPEG is tracked at `assets/FERN_Chris_Lewis_Headshot_Web.jpg` and embedded directly in `index.html`. No face retouching, regeneration, colour changes or image recompression was performed. Its supplied natural 4:5 proportions are retained. The embedded decoded bytes are checksum-tested against the supplied file.
+
+The portrait sits beside the existing name, contact details and enquiry button at 170px wide on desktop and tablet. At narrow mobile widths it moves above the contact text at 132px wide, retaining left alignment and restrained spacing. The Stone branding and all existing contact text/links remain. The overall footer stacks its contact and agency columns on tablet widths to give the contact block adequate room.
+
+Automated checks at 375, 430, 768, 1024, 1440 and 1920 pixels explicitly require one portrait inside the agent contact area; successful decoding; nonzero natural dimensions; visible, unobscured placement within the footer; the exact supplied checksum; natural proportions; and the appropriate desktop or mobile position and size. The HTML-only preview route has no sibling asset directory, so these checks also guard against the earlier missing-asset failure.
+
+Evidence: [desktop footer](qa/headshot-footer-1440.png), [mobile footer](qa/headshot-footer-375.png), and `docs/qa/headshot-results.json`. The complete IM body before the footer, including the partner tiles and finishes, remains byte-identical to commit `8c7650e`; legal footer and floorplan script are unchanged.
 
 ## Review preview and evidence
 
-An updated self-contained review copy is available in this workspace at `/workspace/fern-review/FERN-founder-preview.html`. Open that HTML file in a browser; the logo is embedded and the PDF is an absolute HTTPS link. No public hosted preview has been created, and no existing site has been deployed or changed. A founder-hosted preview cannot be checked until its URL is supplied.
+An updated self-contained review copy is available in this workspace at `/workspace/fern-review/FERN-founder-preview.html`. The logo and portrait are embedded and the PDF is an absolute HTTPS link. Its bytes match the current `index.html`; the exact preview copy was served over HTTP and the portrait was verified decoded and visible. Use a static HTTP server in the managed cloud browser, whose policy blocks direct `file://` navigation. No public hosted preview has been created, and no existing site has been deployed or changed. A separate founder-hosted URL cannot be checked until supplied.
 
 The current browser evidence is recorded in `docs/qa/founder-results.json`. The test suite compares nine preserved regions against PR commit `4bbae04`: five gallery regions including corrected Entry/Dining, the materials section, floorplans/tables, sales cards and location. It also checks every existing contact link, all 75 entries, the disclaimer, typography, overflow, contrast, floorplan tabs, all original images, builder naming and all three completion references. The complete floorplan region and original interaction script remain byte-identical.
 
-This remains a draft PR with the headshot item explicitly outstanding. No merge or deployment is performed.
+The headshot source blocker is resolved. This remains a draft PR for founder review; no merge or deployment is performed.
