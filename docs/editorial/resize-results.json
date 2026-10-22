@@ -1,0 +1,116 @@
+[
+  {
+    "width": 375,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 400,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 600,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 601,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 767,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 768,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 900,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1023,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1024,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1150,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1279,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1280,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1439,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1600,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1680,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 1920,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 2240,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  },
+  {
+    "width": 2560,
+    "overflow": false,
+    "complete": true,
+    "exterior": true
+  }
+]

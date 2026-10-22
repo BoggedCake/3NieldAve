@@ -1,3 +1,5 @@
+Current responsive editorial evidence: [QA and before/after screenshots](editorial/QA.md). Earlier founder review records follow.
+
 # Founder review revisions
 
 Continues draft PR #1 on `feat/fern-finishes-shore`. The latest partner-presentation pass uses commit `c0a6ee1` as its baseline. No IM rebuild, floorplan change, merge or live deployment.

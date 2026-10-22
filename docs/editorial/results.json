@@ -1,0 +1,170 @@
+[
+  {
+    "width": 375,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 278.5
+  },
+  {
+    "width": 390,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 282.30000000074506
+  },
+  {
+    "width": 430,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 242
+  },
+  {
+    "width": 768,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 399.9000000022352
+  },
+  {
+    "width": 1024,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 212.40000000223517
+  },
+  {
+    "width": 1440,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 268.30000000074506
+  },
+  {
+    "width": 1920,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 429.4000000022352
+  },
+  {
+    "width": 2560,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 613,
+    "loadMs": 298.5
+  }
+]
