@@ -66,7 +66,8 @@ async function run() {
         await i.decode();
         const r = i.getBoundingClientRect(), details = document.querySelector('.footer-agent-copy').getBoundingClientRect(), footer = i.closest('.footer-top').getBoundingClientRect();
         const centre = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
-        return {src:i.getAttribute('src'), alt:i.alt, decoded:i.complete && i.naturalWidth > 0, natural:[i.naturalWidth,i.naturalHeight], width:r.width,height:r.height, beside:r.right <= details.left, above:r.bottom <= details.top, contained:r.left >= footer.left && r.right <= footer.right && r.top >= footer.top && r.bottom <= footer.bottom, unobscured:centre === i};
+        const label = document.querySelector('.footer-agent-copy .eyebrow').getBoundingClientRect();
+        return {src:i.getAttribute('src'), alt:i.alt, decoded:i.complete && i.naturalWidth > 0, natural:[i.naturalWidth,i.naturalHeight], width:r.width,height:r.height, topAligned:Math.abs(r.top-label.top)<1, crop:getComputedStyle(i).objectFit, cropPosition:getComputedStyle(i).objectPosition, beside:r.right <= details.left, above:r.bottom <= details.top, contained:r.left >= footer.left && r.right <= footer.right && r.top >= footer.top && r.bottom <= footer.bottom, unobscured:centre === i};
       });
       assert.equal(headshot.decoded, true);
       assert.equal(headshot.unobscured, true, 'Portrait must not be covered by another element');
@@ -75,8 +76,10 @@ async function run() {
       assert.deepEqual(headshot.natural, [840,1050]);
       assert.ok(headshot.src.startsWith('data:image/jpeg;base64,'), 'Portrait must survive HTML-only preview packaging');
       assert.equal(createHash('sha256').update(Buffer.from(headshot.src.split(',')[1],'base64')).digest('hex'), checksums['FERN_Chris_Lewis_Headshot_Web.jpg'], 'Embedded portrait must be the unchanged supplied web JPEG');
-      assert.ok(Math.abs(headshot.width / headshot.height - 0.8) < 0.001, 'Preserve natural 4:5 proportions');
-      if (width >= 768) { assert.ok(headshot.width >= 150 && headshot.width <= 190); assert.equal(headshot.beside,true); }
+      assert.ok(Math.abs(headshot.width / headshot.height - 37/40) < 0.001, 'Use a restrained face-and-shoulders crop');
+      assert.equal(headshot.crop, 'cover');
+      assert.equal(headshot.cropPosition, '50% 0%');
+      if (width >= 768) { assert.ok(headshot.width >= 180 && headshot.width <= 190); assert.equal(headshot.beside,true); assert.equal(headshot.topAligned,true,'Portrait top must align with EXCLUSIVE AGENT'); }
       else { assert.ok(headshot.width >= 120 && headshot.width <= 150); assert.equal(headshot.above,true); }
       assert.equal(await page.locator('img.shore-logo').count(), 1, 'Official supplied SHORE artwork must replace the text approximation');
       const logoSource = await page.locator('img.shore-logo').getAttribute('src');
@@ -94,6 +97,12 @@ async function run() {
       const previousJohinkeWidth = await before.locator('img[alt="Johinke Developments"]').evaluate(i => i.getBoundingClientRect().width * 744 / 1004);
       assert.ok(brandPresentation.johinkeVisibleWidth >= previousJohinkeWidth * 2.5, 'Johinke lettering must be materially larger');
       assert.equal(await page.locator('#materials details').count(), 11, 'All eleven schedule categories must be accessible');
+      const poolHeading = page.locator('.material-note h3', {hasText:'Landscaping & Pool'});
+      assert.equal(await poolHeading.count(),1);
+      assert.equal(await poolHeading.innerText(),'Landscaping & Pool');
+      assert.equal(await poolHeading.locator('..').locator('p').innerText(),'Tumbled travertine, limestone paving and pool coping, landscaped gardens and private green-toned Ezarri glass mosaic pools.');
+      // Normalise only the explicitly approved heading change for visual comparison.
+      await before.locator('.material-note h3', {hasText:'Stone & water'}).evaluate(e => {e.textContent='Landscaping & Pool';});
       assert.equal(normalize(await page.locator('.schedule-note').innerText()), disclaimer, 'Exact builder disclaimer must remain accessible');
       const summaries = await page.locator('#materials summary').allTextContents();
       for (const [i, category] of reference.entries()) {
