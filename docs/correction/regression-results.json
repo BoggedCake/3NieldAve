@@ -1,0 +1,128 @@
+[
+  {
+    "width": 390,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 456.8999999985099
+  },
+  {
+    "width": 430,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 434.5
+  },
+  {
+    "width": 768,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 274.70000000298023
+  },
+  {
+    "width": 1440,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 346.70000000298023
+  },
+  {
+    "width": 1920,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 341.1000000014901
+  },
+  {
+    "width": 2560,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 5,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 610,
+    "loadMs": 351.5
+  }
+]

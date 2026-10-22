@@ -1,0 +1,37 @@
+[
+  {
+    "width": 390,
+    "maxChannelDifferenceAtEdge": 1,
+    "status": "passed"
+  },
+  {
+    "width": 430,
+    "maxChannelDifferenceAtEdge": 1,
+    "status": "passed"
+  },
+  {
+    "width": 768,
+    "maxChannelDifferenceAtEdge": 0,
+    "status": "passed"
+  },
+  {
+    "width": 1440,
+    "maxChannelDifferenceAtEdge": 0,
+    "status": "passed"
+  },
+  {
+    "width": 1920,
+    "maxChannelDifferenceAtEdge": 0,
+    "status": "passed"
+  },
+  {
+    "width": 2560,
+    "maxChannelDifferenceAtEdge": 0,
+    "status": "passed"
+  },
+  {
+    "heroHeight": 900,
+    "maxChannelDifferenceAtEdge": 0,
+    "status": "passed"
+  }
+]

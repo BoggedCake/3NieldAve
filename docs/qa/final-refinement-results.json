@@ -1,0 +1,86 @@
+[
+  {
+    "width": 375,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 594,
+    "loadMs": 802.1000000014901
+  },
+  {
+    "width": 430,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 132,
+      "height": 142.6875,
+      "position": "above contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 594,
+    "loadMs": 393.40000000037253
+  },
+  {
+    "width": 1440,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 594,
+    "loadMs": 596.2999999988824
+  },
+  {
+    "width": 1920,
+    "status": "passed",
+    "headshot": {
+      "visible": true,
+      "decoded": true,
+      "unobscured": true,
+      "width": 185,
+      "height": 200,
+      "position": "beside contact"
+    },
+    "categories": 11,
+    "inclusions": 75,
+    "images": 17,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 594,
+    "loadMs": 427.69999999925494
+  }
+]

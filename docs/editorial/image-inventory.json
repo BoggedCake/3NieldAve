@@ -1,0 +1,182 @@
+[
+  {
+    "identity": "Exterior architecture",
+    "class": "cover-bg",
+    "width": 1280,
+    "height": 1280,
+    "ratio": 1.0,
+    "bytes": 265488,
+    "sha256": "ef4b00869d809cd11796697e9c8397ba3f0bd0ca314ace70c05060cde81383c6",
+    "file": "exterior-architecture.jpg"
+  },
+  {
+    "identity": "Stone Real Estate",
+    "class": "logo-img",
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1.0,
+    "bytes": 53750,
+    "sha256": "660f637a225cd0b72516a70eab13d95b2c1aae6c93fd69d6ac77fc9d1ea6c7a8",
+    "file": "stone-real-estate.png"
+  },
+  {
+    "identity": "Harbour Views",
+    "class": "img-full",
+    "width": 1800,
+    "height": 1200,
+    "ratio": 1.5,
+    "bytes": 429856,
+    "sha256": "62f74ee311554ad13cdaee51b3982a2d65a2ae6fd89d67a5b9ed3aea1076d88b",
+    "file": "harbour-views.jpg"
+  },
+  {
+    "identity": "Living Room",
+    "class": null,
+    "width": 1800,
+    "height": 1200,
+    "ratio": 1.5,
+    "bytes": 146415,
+    "sha256": "df0332860d3d02ac2f662429a73cbf13305998a055d9c9d5025768dc58b6059d",
+    "file": "living-room.jpg"
+  },
+  {
+    "identity": "Family Room",
+    "class": null,
+    "width": 1800,
+    "height": 1199,
+    "ratio": 1.5012510425354462,
+    "bytes": 147438,
+    "sha256": "a9af0326d45bdcd52a47130bdb4a30dc02d90da08a1da89d70e276bbe944068b",
+    "file": "family-room.jpg"
+  },
+  {
+    "identity": "Kitchen",
+    "class": null,
+    "width": 1800,
+    "height": 1199,
+    "ratio": 1.5012510425354462,
+    "bytes": 135923,
+    "sha256": "6bb8abb2cd8fc1b39cca6adfceb58dc41fbea6607589f9807434a207bd03c7a1",
+    "file": "kitchen.jpg"
+  },
+  {
+    "identity": "Entry",
+    "class": "entry-img",
+    "width": 1800,
+    "height": 2250,
+    "ratio": 0.8,
+    "bytes": 664119,
+    "sha256": "ea457d43f982a92fc9810f25c856fe5e2701ee5bef88a3daa99cdb05862c5564",
+    "file": "entry.jpg"
+  },
+  {
+    "identity": "Dining",
+    "class": "dining-img",
+    "width": 1800,
+    "height": 1011,
+    "ratio": 1.7804154302670623,
+    "bytes": 97400,
+    "sha256": "3c0f924bcf9142644b99d4d6f22594da95616e4e165d27f6a5e7470eb919a770",
+    "file": "dining.jpg"
+  },
+  {
+    "identity": "Master Bedroom",
+    "class": null,
+    "width": 1800,
+    "height": 1199,
+    "ratio": 1.5012510425354462,
+    "bytes": 115556,
+    "sha256": "e300eada6915699faaa5a20899c5116dbddb1669c458834165fe1a3826a35142",
+    "file": "master-bedroom.jpg"
+  },
+  {
+    "identity": "Powder Room",
+    "class": null,
+    "width": 1800,
+    "height": 2571,
+    "ratio": 0.7001166861143524,
+    "bytes": 203742,
+    "sha256": "a2e609c1a9a559a9bddff6d7e3a0d3d8daabd8d3deeeabf6523406943ef670a0",
+    "file": "powder-room.jpg"
+  },
+  {
+    "identity": "Ensuite",
+    "class": null,
+    "width": 1800,
+    "height": 1384,
+    "ratio": 1.300578034682081,
+    "bytes": 99781,
+    "sha256": "74ae3a20e51444d8812cfe2b4e0ac97c3eeb3bff49f6d277927fc2623688cbdc",
+    "file": "ensuite.jpg"
+  },
+  {
+    "identity": "Johinke Developments",
+    "class": "johinke-logo",
+    "width": 1004,
+    "height": 591,
+    "ratio": 1.6988155668358713,
+    "bytes": 27670,
+    "sha256": "a247695873900ce886f6d3646b31832458d2ae07d8f81bb77eb62c233851757a",
+    "file": "johinke-developments.png"
+  },
+  {
+    "identity": "SHORE Projects \u2014 The build behind the address",
+    "class": "shore-logo",
+    "width": 1600,
+    "height": 668,
+    "ratio": 2.395209580838323,
+    "bytes": 63668,
+    "sha256": "6d2a5760d636496d1a4542d56b7304541e6ee7751aa3480a1609158cc9c9bd09",
+    "file": "shore-projects-the-build-behind-the-address.jpg"
+  },
+  {
+    "identity": "Basement Plan",
+    "class": "fp-img",
+    "width": 1600,
+    "height": 927,
+    "ratio": 1.725997842502697,
+    "bytes": 147608,
+    "sha256": "df4b298fe8eb240ae6cdb69ee14a7769dc9bb29af0193464dcd6ca1e94cd52b1",
+    "file": "basement-plan.jpg"
+  },
+  {
+    "identity": "Ground Floor Plan",
+    "class": "fp-img",
+    "width": 1600,
+    "height": 927,
+    "ratio": 1.725997842502697,
+    "bytes": 140375,
+    "sha256": "32577b4b195559981a6c39c0dfff6543d01592133aecd9d434077fbee1bc5ccb",
+    "file": "ground-floor-plan.jpg"
+  },
+  {
+    "identity": "First Floor Plan",
+    "class": "fp-img",
+    "width": 1600,
+    "height": 927,
+    "ratio": 1.725997842502697,
+    "bytes": 142320,
+    "sha256": "903bfd71db3d1b66e014c9cb10ee57c37c33db3906bb5e6929e231ff0d8806dc",
+    "file": "first-floor-plan.jpg"
+  },
+  {
+    "identity": "Chris Lewis, Exclusive Agent",
+    "class": "agent-headshot",
+    "width": 840,
+    "height": 1050,
+    "ratio": 0.8,
+    "bytes": 109754,
+    "sha256": "451657dbd11aedcb414bc65042146468297b6fb5e9546fd95f9689fb4c168f27",
+    "file": "chris-lewis-exclusive-agent.jpg"
+  },
+  {
+    "identity": "Stone Real Estate",
+    "class": null,
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1.0,
+    "bytes": 53750,
+    "sha256": "660f637a225cd0b72516a70eab13d95b2c1aae6c93fd69d6ac77fc9d1ea6c7a8",
+    "file": "stone-real-estate.png"
+  }
+]

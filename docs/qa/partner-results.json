@@ -1,0 +1,80 @@
+[
+  {
+    "width": 375,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 957.8999999994412
+  },
+  {
+    "width": 430,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 349.30000000074506
+  },
+  {
+    "width": 768,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 607.9000000003725
+  },
+  {
+    "width": 1024,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 344.3999999994412
+  },
+  {
+    "width": 1440,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 452.09999999962747
+  },
+  {
+    "width": 1920,
+    "status": "passed",
+    "categories": 11,
+    "inclusions": 75,
+    "images": 16,
+    "unchangedSections": 9,
+    "errors": [],
+    "failedRequests": [],
+    "fontLoaded": true,
+    "domElements": 592,
+    "loadMs": 352.70000000018626
+  }
+]

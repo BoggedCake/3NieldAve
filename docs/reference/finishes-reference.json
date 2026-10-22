@@ -1,0 +1,368 @@
+[
+  {
+    "number": "01",
+    "title": "Architecture & Façade",
+    "items": [
+      {
+        "label": "FAÇADE",
+        "description": "Rendered and painted façade in a soft white (Dulux)"
+      },
+      {
+        "label": "CLADDING",
+        "description": "Timber-look aluminium battens in a Norwegian Beech tone (Knotwood)"
+      },
+      {
+        "label": "ENTRY DOOR",
+        "description": "Timber-clad entry door in matching timber-look aluminium, with solid brass pull handle in bronze"
+      },
+      {
+        "label": "GARAGE DOOR",
+        "description": "Sectional garage door clad in matching timber-look battens"
+      },
+      {
+        "label": "WINDOWS & DOORS",
+        "description": "Aluminium windows and sliding doors, powder-coated in medium bronze, with flush black sliding door hardware"
+      },
+      {
+        "label": "FLYSCREENS",
+        "description": "Flyscreens to openable windows and doors"
+      },
+      {
+        "label": "BALUSTRADES",
+        "description": "Frameless glass balustrades with brushed nickel pin fixings to balconies"
+      }
+    ]
+  },
+  {
+    "number": "02",
+    "title": "Landscape, Paving & Pool",
+    "items": [
+      {
+        "label": "PAVING",
+        "description": "Tumbled travertine crazy paving in ivory, with tumbled natural stone cobblestones"
+      },
+      {
+        "label": "PORCH & BALCONIES",
+        "description": "Sandblasted, tumbled limestone in a soft beige"
+      },
+      {
+        "label": "POOL",
+        "description": "In-ground pool finished in a green-toned glass mosaic (Ezarri)"
+      },
+      {
+        "label": "POOL COPING",
+        "description": "Tumbled limestone coping"
+      },
+      {
+        "label": "POOL EQUIPMENT",
+        "description": "Pool lighting, filtration and pump equipment"
+      },
+      {
+        "label": "DRIVEWAY",
+        "description": "Sealed concrete driveway"
+      },
+      {
+        "label": "LANDSCAPING",
+        "description": "Landscaped gardens with feature tree and built-in planter boxes, irrigated from a rainwater tank"
+      },
+      {
+        "label": "ARRIVAL",
+        "description": "Letterbox and house numbering"
+      }
+    ]
+  },
+  {
+    "number": "03",
+    "title": "General Interior Finishes",
+    "items": [
+      {
+        "label": "FLOORING",
+        "description": "Engineered European ash laid in herringbone, Arctic Mist tone with a matte finish"
+      },
+      {
+        "label": "WALLS & CEILINGS",
+        "description": "Painted in a soft, warm white (Dulux)"
+      },
+      {
+        "label": "DOORS",
+        "description": "Solid core internal doors with flush shadowline door jambs"
+      },
+      {
+        "label": "SKIRTING",
+        "description": "Flush shadowline skirting detail"
+      },
+      {
+        "label": "DOOR HARDWARE",
+        "description": "Solid brass levers, hinges and door stops in brushed nickel (Lo & Co)"
+      },
+      {
+        "label": "JOINERY",
+        "description": "Custom joinery in a natural timber-look finish with brushed nickel handles (Lo & Co)"
+      }
+    ]
+  },
+  {
+    "number": "04",
+    "title": "Foyer, Mudroom & Staircase",
+    "items": [
+      {
+        "label": "FOYER",
+        "description": "Feature wall tiling in a grey matt finish, with brass and clear glass wall sconces"
+      },
+      {
+        "label": "MUDROOM",
+        "description": "Custom mudroom joinery with Taj Mahal quartzite"
+      },
+      {
+        "label": "STAIRCASE",
+        "description": "Engineered ash with Taj Mahal quartzite detailing and a solid plastered balustrade"
+      },
+      {
+        "label": "LIGHTING",
+        "description": "Recessed step lights to the staircase"
+      }
+    ]
+  },
+  {
+    "number": "05",
+    "title": "Kitchen & Butler’s Pantry",
+    "items": [
+      {
+        "label": "BENCHTOPS",
+        "description": "Taj Mahal quartzite in a honed finish"
+      },
+      {
+        "label": "JOINERY",
+        "description": "Custom cabinetry in a natural timber-look finish with brushed nickel handles"
+      },
+      {
+        "label": "OVEN",
+        "description": "Gaggenau wall oven"
+      },
+      {
+        "label": "COOKTOP",
+        "description": "PITT integrated gas cooktop, set flush into the stone"
+      },
+      {
+        "label": "REFRIGERATION",
+        "description": "Fisher & Paykel integrated French door fridge freezer"
+      },
+      {
+        "label": "APPLIANCES",
+        "description": "Dishwasher, microwave and rangehood"
+      },
+      {
+        "label": "FILTERED WATER",
+        "description": "Zip HydroTap – boiling and chilled filtered water"
+      },
+      {
+        "label": "TAPWARE",
+        "description": "Nero pull-out mixer with vegie spray and wall-mounted pot filler, brushed nickel"
+      },
+      {
+        "label": "SINK",
+        "description": "Stainless steel double bowl sink"
+      }
+    ]
+  },
+  {
+    "number": "06",
+    "title": "Dining, Bar, Living & Family",
+    "items": [
+      {
+        "label": "BAR",
+        "description": "Bar joinery with Taj Mahal quartzite and bar fridge"
+      },
+      {
+        "label": "FEATURE WALLS",
+        "description": "Hand-applied ivory Venetian plaster feature walls (FX)"
+      },
+      {
+        "label": "JOINERY",
+        "description": "Custom joinery in a natural timber-look finish"
+      },
+      {
+        "label": "LIGHTING",
+        "description": "Brass and clear glass wall sconces, concealed LED strip lighting and feature lighting to dining"
+      },
+      {
+        "label": "FLOORING",
+        "description": "Engineered ash herringbone"
+      }
+    ]
+  },
+  {
+    "number": "07",
+    "title": "Master & Secondary Bedrooms",
+    "items": [
+      {
+        "label": "FLOORING",
+        "description": "Engineered ash herringbone throughout"
+      },
+      {
+        "label": "ROBES",
+        "description": "Built-in robes in a natural timber-look finish"
+      },
+      {
+        "label": "MASTER LIGHTING",
+        "description": "Brass and clear glass wall sconces with concealed LED strip lighting"
+      }
+    ]
+  },
+  {
+    "number": "08",
+    "title": "Master Ensuite",
+    "items": [
+      {
+        "label": "WALLS",
+        "description": "Seamless microcement in Cocomilk (Mineral Fox)"
+      },
+      {
+        "label": "FLOORS",
+        "description": "Grey matt tiling"
+      },
+      {
+        "label": "STONE",
+        "description": "Taj Mahal quartzite in a honed finish"
+      },
+      {
+        "label": "VANITY",
+        "description": "Custom vanity in a natural timber-look finish"
+      },
+      {
+        "label": "BATH",
+        "description": "Bath with wall-mounted mixer and spout"
+      },
+      {
+        "label": "SHOWER",
+        "description": "Frameless shower screen, overhead rain shower and hand shower on rail"
+      },
+      {
+        "label": "TAPWARE",
+        "description": "Nero tapware, towel rail, robe hook and toilet roll holder in brushed nickel"
+      },
+      {
+        "label": "TOILET",
+        "description": "Wall-faced toilet with in-wall cistern"
+      },
+      {
+        "label": "DRAINAGE",
+        "description": "Linear shower drain and tile-insert floor wastes in brushed nickel"
+      },
+      {
+        "label": "STORAGE",
+        "description": "Mirrored shaving cabinet"
+      },
+      {
+        "label": "LIGHTING",
+        "description": "Wall sconce and concealed LED strip lighting"
+      }
+    ]
+  },
+  {
+    "number": "09",
+    "title": "Main Bathroom",
+    "items": [
+      {
+        "label": "WALLS & FLOORS",
+        "description": "Grey matt tiling"
+      },
+      {
+        "label": "STONE",
+        "description": "Taj Mahal quartzite in a honed finish"
+      },
+      {
+        "label": "VANITY",
+        "description": "Custom vanity in a natural timber-look finish"
+      },
+      {
+        "label": "BATH",
+        "description": "Bath with wall-mounted mixer and spout"
+      },
+      {
+        "label": "SHOWER",
+        "description": "Overhead rain shower and hand shower on rail"
+      },
+      {
+        "label": "TAPWARE",
+        "description": "Nero tapware, robe hook and toilet roll holder in brushed nickel"
+      },
+      {
+        "label": "TOILET",
+        "description": "Wall-faced toilet"
+      },
+      {
+        "label": "DRAINAGE",
+        "description": "Linear shower drain and tile-insert floor wastes in brushed nickel"
+      }
+    ]
+  },
+  {
+    "number": "10",
+    "title": "Powder Room & Laundry",
+    "items": [
+      {
+        "label": "POWDER WALLS",
+        "description": "Hand-applied ivory Venetian plaster"
+      },
+      {
+        "label": "POWDER FIXTURES",
+        "description": "Pedestal basin with wall-mounted Nero mixer in brushed nickel, brass wall sconce"
+      },
+      {
+        "label": "POWDER FLOORS",
+        "description": "Grey matt tiling"
+      },
+      {
+        "label": "LAUNDRY",
+        "description": "Custom joinery in a natural timber-look finish with Taj Mahal quartzite benchtop"
+      },
+      {
+        "label": "LAUNDRY FIXTURES",
+        "description": "Stainless steel sink and Nero mixer in brushed nickel"
+      },
+      {
+        "label": "LAUNDRY FLOORS",
+        "description": "Grey matt tiling"
+      }
+    ]
+  },
+  {
+    "number": "11",
+    "title": "Comfort, Technology & Services",
+    "items": [
+      {
+        "label": "CLIMATE",
+        "description": "Daikin ducted reverse-cycle air conditioning with zone control"
+      },
+      {
+        "label": "HOT WATER",
+        "description": "Rinnai continuous-flow gas hot water"
+      },
+      {
+        "label": "INTERCOM",
+        "description": "Video intercom (Dahua)"
+      },
+      {
+        "label": "ELECTRICAL",
+        "description": "Slimline matt white switches (Hager), USB-C power outlets and weatherproof external power"
+      },
+      {
+        "label": "LIGHTING",
+        "description": "LED downlights throughout, with façade, garden and landscape lighting"
+      },
+      {
+        "label": "EV READY",
+        "description": "Provision for an electric vehicle charger"
+      },
+      {
+        "label": "WATER",
+        "description": "Rainwater tank with pump and garden irrigation system"
+      },
+      {
+        "label": "SAFETY",
+        "description": "Hard-wired photoelectric smoke alarms with battery back-up"
+      }
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "html_sha256": "8b7cc200eb821ca557da7ce7fd5054ec0a07a010df14bfb55f3f46869b45dc3e",
+  "images": [
+    {
+      "alt": "Stone Real Estate",
+      "class": "logo-img",
+      "src_sha256": "d66f9ded1bf16cc04001af5207c45661b226ee932d48d997c659b227e8d9a1c3",
+      "embedded": true
+    },
+    {
+      "alt": "Harbour Views",
+      "class": "img-full",
+      "style": "max-height:560px;object-fit:cover;",
+      "src_sha256": "aaba4baee90a276ab6d7fcc306623058d7e71d5f4e19466cdf0fdb8f32f3bba0",
+      "embedded": true
+    },
+    {
+      "alt": "Living Room",
+      "class": "img-main",
+      "src_sha256": "c9eade8774571321f962a77e63d93c348e4764d7e43dd34d74a58c9a756293c5",
+      "embedded": true
+    },
+    {
+      "alt": "Kitchen",
+      "class": "img-side",
+      "src_sha256": "a9ebfdc7ec847b64c089ed84998d4fdacc496a9bf45bd332ef1879a5c7946820",
+      "embedded": true
+    },
+    {
+      "alt": "Winter Garden",
+      "class": "img-side",
+      "src_sha256": "5946a31db379d8c34af7321bd80ad633c65f1f9f5c0131098c5825f5d88f7a4c",
+      "embedded": true
+    },
+    {
+      "alt": "Floor Plans \u2014 3 Nield Avenue",
+      "class": "floorplan-img",
+      "style": "margin-bottom:40px;border-radius:2px;",
+      "src_sha256": "b6d7d72c350c9bddf1f68376cd097457b93440d3c270c45512a07f7a0f13d467",
+      "embedded": true
+    },
+    {
+      "alt": "Private Pool and Garden",
+      "class": "img-full",
+      "style": "max-height:520px;object-fit:cover;",
+      "src_sha256": "5a4e0bfaf12acf47cdbd6863f99ab5edc95a44aa04aa8e45bca5e9c14ec9baa7",
+      "embedded": true
+    },
+    {
+      "alt": "Stone Real Estate",
+      "style": "width:170px;height:auto;display:inline-block;",
+      "src_sha256": "d66f9ded1bf16cc04001af5207c45661b226ee932d48d997c659b227e8d9a1c3",
+      "embedded": true
+    }
+  ]
+}
