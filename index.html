@@ -86,9 +86,9 @@
   .gallery-2-equal img{width:100%;height:480px;object-fit:cover;display:block;}
 
   /* 3. Entry portrait + dining landscape stacked */
-  .gallery-entry-dining{display:grid;grid-template-columns:2fr 3fr;gap:4px;height:580px;}
-  .gallery-entry-dining .entry-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-  .gallery-entry-dining .dining-img{width:100%;height:100%;object-fit:cover;display:block;}
+  .gallery-entry-dining{display:grid;grid-template-columns:0.8fr 1.78041543fr;gap:4px;align-items:start;}
+  .gallery-entry-dining .entry-img{width:100%;height:auto;display:block;min-width:0;}
+  .gallery-entry-dining .dining-img{width:100%;height:auto;display:block;min-width:0;}
 
   /* 4. Bed full width + pow + ens side by side */
   .gallery-bed-hero{width:100%;}
@@ -124,8 +124,7 @@
   .partner-card-johinke{background:#2c4a5e;}
   .partner-card-shore{background:#111;}
   .partner-label{font-family:"Poppins",sans-serif;font-weight:500;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px;display:block;}
-  .shore-wordmark{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:900;font-size:58px;color:#fff;letter-spacing:-2px;line-height:1;display:block;}
-  .shore-tagline{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:13.5px;color:rgba(255,255,255,0.6);margin-top:8px;display:block;}
+  .shore-logo{width:100%;max-width:360px;height:auto;display:block;}
   .partner-desc{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.8;margin-top:28px;}
 
   /* FLOORPLAN TABS */
@@ -152,11 +151,47 @@
     .gallery-2-equal img,.gallery-2-pow-ens img{height:300px;}
     .gallery-hero img,.gallery-bed-hero img{height:320px;}
     .gallery-entry-dining{grid-template-columns:1fr;height:auto;}
-    .gallery-entry-dining .entry-img,.gallery-entry-dining .dining-img{height:320px;}
+    .gallery-entry-dining .entry-img,.gallery-entry-dining .dining-img{height:auto;}
     .footer-top{grid-template-columns:1fr;}
     .section-light,.section-alt,.section-dark{padding:48px 6%;}
     .cover-header,.cover-content{padding-left:6%;padding-right:6%;}
     .cover-stats{grid-template-columns:repeat(2,1fr);gap:20px;}
+  }
+
+  /* Finishes: editorial highlights and complete, keyboard-accessible schedule. */
+  .materials-intro{max-width:760px;}
+  #materials .eyebrow{color:#00777a;}
+  .material-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 40px;margin:36px 0 48px;}
+  .material-note{border-top:1px solid var(--stone-mid);padding-top:18px;}
+  .material-note h3{font-size:23px;color:var(--stone-grey);margin-bottom:8px;line-height:1.25;}
+  .material-note p{font-size:13px;line-height:1.8;}
+  .schedule-header{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:18px;flex-wrap:wrap;}
+  .schedule-header h3{font-size:26px;color:var(--stone-grey);}
+  .schedule-link{font-size:12px;color:var(--stone-grey);text-underline-offset:4px;}
+  .finish-category{border-top:1px solid var(--stone-mid);}
+  .finish-category:last-child{border-bottom:1px solid var(--stone-mid);}
+  .finish-category summary{padding:20px 4px;cursor:pointer;font-size:16px;color:var(--stone-grey);line-height:1.5;}
+  .finish-number{font-size:10px;letter-spacing:0.12em;color:#00777a;margin:0 16px 0 8px;vertical-align:middle;}
+  .finish-category summary:focus-visible,.schedule-link:focus-visible{outline:2px solid var(--stone-teal);outline-offset:4px;}
+  .finish-category dl{padding:0 4px 20px;}
+  .finish-row{display:grid;grid-template-columns:minmax(140px,1fr) 3fr;gap:16px;padding:11px 0;border-top:1px solid var(--stone-mid);}
+  .finish-row dt{font-size:10px;letter-spacing:0.08em;color:var(--text-body);padding-top:3px;}
+  .finish-row dd{font-size:13px;line-height:1.8;}
+  .schedule-note{font-size:11px;line-height:1.85;color:var(--text-body);margin-top:28px;max-width:1000px;}
+  @media(max-width:760px){
+    .material-notes{grid-template-columns:1fr;gap:24px;margin:28px 0 36px;}
+    .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .stat-cell{min-width:0;}
+    .finish-category summary{font-size:14px;padding:18px 2px;}
+    .finish-number{margin-right:8px;}
+    .finish-row{grid-template-columns:1fr;gap:4px;}
+    .partner-card{padding:40px 6%;}
+  }
+  @media print{
+    #materials details::details-content{content-visibility:visible;height:auto;}
+    #materials details{break-inside:avoid;}
+    #materials summary{cursor:default;}
+    .material-notes{break-inside:avoid;}
   }
 </style>
 </head>
@@ -170,7 +205,7 @@
     <div class="cover-tag">Pre-Market Opportunity</div>
   </div>
   <div class="cover-content">
-    <div class="cover-eyebrow">Information Memorandum — Luxury Duplex</div>
+    <div class="cover-eyebrow">FERN · Information Memorandum — Luxury Duplex</div>
     <h1 class="cover-title">3 Nield Avenue<br>Balgowlah</h1>
     <div class="cover-subtitle">Northern Beaches, New South Wales 2093</div>
     <hr class="cover-divider">
@@ -195,7 +230,7 @@
     <div class="stat-cell"><span class="stat-cell-label">Zoning</span><span class="stat-cell-value">R1</span><span class="stat-cell-sub">General Residential</span></div>
     <div class="stat-cell"><span class="stat-cell-label">Residence 1</span><span class="stat-cell-value">350 m²</span><span class="stat-cell-sub">Incl. winter garden</span></div>
     <div class="stat-cell"><span class="stat-cell-label">Residence 2</span><span class="stat-cell-value">340 m²</span><span class="stat-cell-sub">Incl. winter garden</span></div>
-    <div class="stat-cell"><span class="stat-cell-label">Completion</span><span class="stat-cell-value">Q1 2027</span><span class="stat-cell-sub">Est. ~6–7 months</span></div>
+    <div class="stat-cell"><span class="stat-cell-label">Completion</span><span class="stat-cell-value">Q1 2027</span><span class="stat-cell-sub">Target completion</span></div>
     <div class="stat-cell"><span class="stat-cell-label">Status</span><span class="stat-cell-value">Under Construction</span><span class="stat-cell-sub">Basement excavation commenced</span></div>
   </div>
   <div class="two-col-3-2">
@@ -228,7 +263,7 @@
   </div>
   <div class="two-col">
     <div class="body-copy">
-      <p>Each residence at 3 Nield Avenue has been conceived to deliver the Northern Beaches' most refined duplex product. The design by Shore combines a sculptural street presence with a rigorously considered interior — every space planned for the way high-end owner-occupiers and downsizers actually live.</p>
+      <p>Each residence at 3 Nield Avenue has been conceived to deliver the Northern Beaches' most refined duplex product. The architectural design combines a sculptural street presence with a rigorously considered interior — every space planned for the way high-end owner-occupiers and downsizers actually live.</p>
       <p>All four bedrooms are positioned on the ground floor, with the master suite at the front of the home enjoying a private balcony and harbour outlook. The first floor delivers the main living, kitchen, dining and winter garden — a considered inversion that places primary living spaces at the view level, where they belong.</p>
       <div class="highlight-box" style="margin-top:20px;">
         <p>Both residences benefit from private pools, basement garages with internal access, internal lifts, and harbour views — a combination of features exceptionally rare in the Northern Beaches duplex market at any price point.</p>
@@ -246,7 +281,7 @@
         <li>Home cinema at basement level</li>
         <li>Gym, sauna &amp; wellness area at basement level</li>
         <li>Wine wall at basement level</li>
-        <li>Travertine, oak and bespoke joinery throughout</li>
+        <li>Travertine, engineered European ash and bespoke joinery throughout</li>
         <li>Gas fireplace to living room</li>
         <li>Alfresco entertaining with outdoor kitchen</li>
       </ul>
@@ -295,12 +330,132 @@
   <div class="partner-card partner-card-shore">
     <div>
       <span class="partner-label">Builder</span>
-      <span class="shore-wordmark">SHORE</span>
-      <span class="shore-tagline">The build behind the address</span>
+      <img src="assets/shore-logo.jpg" alt="SHORE — The build behind the address" class="shore-logo" width="1600" height="668">
     </div>
     <p class="partner-desc">Shore Projects is one of Sydney's most respected high-end luxury builders, renowned for their exacting standards and ability to execute architecturally complex, ultra-premium residential projects. Their involvement at 3 Nield Avenue is a mark of quality that sets this project apart — and gives buyers confidence in what they are purchasing.</p>
   </div>
 </div>
+
+<!-- MATERIALS, FINISHES & INCLUSIONS -->
+<section class="section-light" id="materials" aria-labelledby="materials-title">
+<div class="section-inner">
+  <div class="section-header">
+    <div class="eyebrow">FERN · Craftsmanship &amp; Detail</div>
+    <h2 id="materials-title">Materials, Finishes &amp; Inclusions</h2>
+  </div>
+  <p class="body-copy materials-intro">Natural stone, warm timber and soft, layered whites. Each residence at FERN brings together honed quartzite, herringbone ash and hand-applied plaster in a considered coastal palette. Explore the key materials below, followed by the complete builder-supplied schedule for both homes.</p>
+  <div class="material-notes">
+    <div class="material-note"><h3>Honed Taj Mahal quartzite</h3><p>Natural stone benchtops and detailing, carried through the kitchen, mudroom, bar, bathrooms and laundry.</p></div>
+    <div class="material-note"><h3>European ash herringbone</h3><p>Engineered European ash in Arctic Mist, with a matte finish and a herringbone pattern throughout the living spaces and bedrooms.</p></div>
+    <div class="material-note"><h3>Joinery &amp; hand-applied plaster</h3><p>Bespoke timber-look cabinetry, ivory Venetian plaster and brushed nickel hardware create a calm, layered interior.</p></div>
+    <div class="material-note"><h3>A considered kitchen</h3><p>Gaggenau wall oven, PITT integrated gas cooktop, Fisher &amp; Paykel integrated refrigeration and Zip boiling and chilled filtered water.</p></div>
+    <div class="material-note"><h3>Architectural bathrooms</h3><p>Cocomilk microcement to the master ensuite, grey matt tiling, honed quartzite and brushed nickel Nero fittings.</p></div>
+    <div class="material-note"><h3>Stone &amp; water</h3><p>Tumbled travertine, limestone paving and pool coping, landscaped gardens and private green-toned Ezarri glass mosaic pools.</p></div>
+  </div>
+  <div class="schedule-header"><h3>Complete finishes schedule</h3><a class="schedule-link" href="assets/fern-finishes-inclusions.pdf">View the supplied schedule (PDF, 4 MB)</a></div>
+  <p style="font-size:12px;margin-bottom:20px;">Select a category to explore every documented inclusion.</p>
+  <div class="finish-schedule">
+    <details class="finish-category"><summary><span class="finish-number">01</span>Architecture &amp; Façade</summary><dl>
+      <div class="finish-row"><dt>FAÇADE</dt><dd>Rendered and painted façade in a soft white (Dulux)</dd></div>
+      <div class="finish-row"><dt>CLADDING</dt><dd>Timber-look aluminium battens in a Norwegian Beech tone (Knotwood)</dd></div>
+      <div class="finish-row"><dt>ENTRY DOOR</dt><dd>Timber-clad entry door in matching timber-look aluminium, with solid brass pull handle in bronze</dd></div>
+      <div class="finish-row"><dt>GARAGE DOOR</dt><dd>Sectional garage door clad in matching timber-look battens</dd></div>
+      <div class="finish-row"><dt>WINDOWS &amp; DOORS</dt><dd>Aluminium windows and sliding doors, powder-coated in medium bronze, with flush black sliding door hardware</dd></div>
+      <div class="finish-row"><dt>FLYSCREENS</dt><dd>Flyscreens to openable windows and doors</dd></div>
+      <div class="finish-row"><dt>BALUSTRADES</dt><dd>Frameless glass balustrades with brushed nickel pin fixings to balconies</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">02</span>Landscape, Paving &amp; Pool</summary><dl>
+      <div class="finish-row"><dt>PAVING</dt><dd>Tumbled travertine crazy paving in ivory, with tumbled natural stone cobblestones</dd></div>
+      <div class="finish-row"><dt>PORCH &amp; BALCONIES</dt><dd>Sandblasted, tumbled limestone in a soft beige</dd></div>
+      <div class="finish-row"><dt>POOL</dt><dd>In-ground pool finished in a green-toned glass mosaic (Ezarri)</dd></div>
+      <div class="finish-row"><dt>POOL COPING</dt><dd>Tumbled limestone coping</dd></div>
+      <div class="finish-row"><dt>POOL EQUIPMENT</dt><dd>Pool lighting, filtration and pump equipment</dd></div>
+      <div class="finish-row"><dt>DRIVEWAY</dt><dd>Sealed concrete driveway</dd></div>
+      <div class="finish-row"><dt>LANDSCAPING</dt><dd>Landscaped gardens with feature tree and built-in planter boxes, irrigated from a rainwater tank</dd></div>
+      <div class="finish-row"><dt>ARRIVAL</dt><dd>Letterbox and house numbering</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">03</span>General Interior Finishes</summary><dl>
+      <div class="finish-row"><dt>FLOORING</dt><dd>Engineered European ash laid in herringbone, Arctic Mist tone with a matte finish</dd></div>
+      <div class="finish-row"><dt>WALLS &amp; CEILINGS</dt><dd>Painted in a soft, warm white (Dulux)</dd></div>
+      <div class="finish-row"><dt>DOORS</dt><dd>Solid core internal doors with flush shadowline door jambs</dd></div>
+      <div class="finish-row"><dt>SKIRTING</dt><dd>Flush shadowline skirting detail</dd></div>
+      <div class="finish-row"><dt>DOOR HARDWARE</dt><dd>Solid brass levers, hinges and door stops in brushed nickel (Lo &amp; Co)</dd></div>
+      <div class="finish-row"><dt>JOINERY</dt><dd>Custom joinery in a natural timber-look finish with brushed nickel handles (Lo &amp; Co)</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">04</span>Foyer, Mudroom &amp; Staircase</summary><dl>
+      <div class="finish-row"><dt>FOYER</dt><dd>Feature wall tiling in a grey matt finish, with brass and clear glass wall sconces</dd></div>
+      <div class="finish-row"><dt>MUDROOM</dt><dd>Custom mudroom joinery with Taj Mahal quartzite</dd></div>
+      <div class="finish-row"><dt>STAIRCASE</dt><dd>Engineered ash with Taj Mahal quartzite detailing and a solid plastered balustrade</dd></div>
+      <div class="finish-row"><dt>LIGHTING</dt><dd>Recessed step lights to the staircase</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">05</span>Kitchen &amp; Butler’s Pantry</summary><dl>
+      <div class="finish-row"><dt>BENCHTOPS</dt><dd>Taj Mahal quartzite in a honed finish</dd></div>
+      <div class="finish-row"><dt>JOINERY</dt><dd>Custom cabinetry in a natural timber-look finish with brushed nickel handles</dd></div>
+      <div class="finish-row"><dt>OVEN</dt><dd>Gaggenau wall oven</dd></div>
+      <div class="finish-row"><dt>COOKTOP</dt><dd>PITT integrated gas cooktop, set flush into the stone</dd></div>
+      <div class="finish-row"><dt>REFRIGERATION</dt><dd>Fisher &amp; Paykel integrated French door fridge freezer</dd></div>
+      <div class="finish-row"><dt>APPLIANCES</dt><dd>Dishwasher, microwave and rangehood</dd></div>
+      <div class="finish-row"><dt>FILTERED WATER</dt><dd>Zip HydroTap – boiling and chilled filtered water</dd></div>
+      <div class="finish-row"><dt>TAPWARE</dt><dd>Nero pull-out mixer with vegie spray and wall-mounted pot filler, brushed nickel</dd></div>
+      <div class="finish-row"><dt>SINK</dt><dd>Stainless steel double bowl sink</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">06</span>Dining, Bar, Living &amp; Family</summary><dl>
+      <div class="finish-row"><dt>BAR</dt><dd>Bar joinery with Taj Mahal quartzite and bar fridge</dd></div>
+      <div class="finish-row"><dt>FEATURE WALLS</dt><dd>Hand-applied ivory Venetian plaster feature walls (FX)</dd></div>
+      <div class="finish-row"><dt>JOINERY</dt><dd>Custom joinery in a natural timber-look finish</dd></div>
+      <div class="finish-row"><dt>LIGHTING</dt><dd>Brass and clear glass wall sconces, concealed LED strip lighting and feature lighting to dining</dd></div>
+      <div class="finish-row"><dt>FLOORING</dt><dd>Engineered ash herringbone</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">07</span>Master &amp; Secondary Bedrooms</summary><dl>
+      <div class="finish-row"><dt>FLOORING</dt><dd>Engineered ash herringbone throughout</dd></div>
+      <div class="finish-row"><dt>ROBES</dt><dd>Built-in robes in a natural timber-look finish</dd></div>
+      <div class="finish-row"><dt>MASTER LIGHTING</dt><dd>Brass and clear glass wall sconces with concealed LED strip lighting</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">08</span>Master Ensuite</summary><dl>
+      <div class="finish-row"><dt>WALLS</dt><dd>Seamless microcement in Cocomilk (Mineral Fox)</dd></div>
+      <div class="finish-row"><dt>FLOORS</dt><dd>Grey matt tiling</dd></div>
+      <div class="finish-row"><dt>STONE</dt><dd>Taj Mahal quartzite in a honed finish</dd></div>
+      <div class="finish-row"><dt>VANITY</dt><dd>Custom vanity in a natural timber-look finish</dd></div>
+      <div class="finish-row"><dt>BATH</dt><dd>Bath with wall-mounted mixer and spout</dd></div>
+      <div class="finish-row"><dt>SHOWER</dt><dd>Frameless shower screen, overhead rain shower and hand shower on rail</dd></div>
+      <div class="finish-row"><dt>TAPWARE</dt><dd>Nero tapware, towel rail, robe hook and toilet roll holder in brushed nickel</dd></div>
+      <div class="finish-row"><dt>TOILET</dt><dd>Wall-faced toilet with in-wall cistern</dd></div>
+      <div class="finish-row"><dt>DRAINAGE</dt><dd>Linear shower drain and tile-insert floor wastes in brushed nickel</dd></div>
+      <div class="finish-row"><dt>STORAGE</dt><dd>Mirrored shaving cabinet</dd></div>
+      <div class="finish-row"><dt>LIGHTING</dt><dd>Wall sconce and concealed LED strip lighting</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">09</span>Main Bathroom</summary><dl>
+      <div class="finish-row"><dt>WALLS &amp; FLOORS</dt><dd>Grey matt tiling</dd></div>
+      <div class="finish-row"><dt>STONE</dt><dd>Taj Mahal quartzite in a honed finish</dd></div>
+      <div class="finish-row"><dt>VANITY</dt><dd>Custom vanity in a natural timber-look finish</dd></div>
+      <div class="finish-row"><dt>BATH</dt><dd>Bath with wall-mounted mixer and spout</dd></div>
+      <div class="finish-row"><dt>SHOWER</dt><dd>Overhead rain shower and hand shower on rail</dd></div>
+      <div class="finish-row"><dt>TAPWARE</dt><dd>Nero tapware, robe hook and toilet roll holder in brushed nickel</dd></div>
+      <div class="finish-row"><dt>TOILET</dt><dd>Wall-faced toilet</dd></div>
+      <div class="finish-row"><dt>DRAINAGE</dt><dd>Linear shower drain and tile-insert floor wastes in brushed nickel</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">10</span>Powder Room &amp; Laundry</summary><dl>
+      <div class="finish-row"><dt>POWDER WALLS</dt><dd>Hand-applied ivory Venetian plaster</dd></div>
+      <div class="finish-row"><dt>POWDER FIXTURES</dt><dd>Pedestal basin with wall-mounted Nero mixer in brushed nickel, brass wall sconce</dd></div>
+      <div class="finish-row"><dt>POWDER FLOORS</dt><dd>Grey matt tiling</dd></div>
+      <div class="finish-row"><dt>LAUNDRY</dt><dd>Custom joinery in a natural timber-look finish with Taj Mahal quartzite benchtop</dd></div>
+      <div class="finish-row"><dt>LAUNDRY FIXTURES</dt><dd>Stainless steel sink and Nero mixer in brushed nickel</dd></div>
+      <div class="finish-row"><dt>LAUNDRY FLOORS</dt><dd>Grey matt tiling</dd></div>
+    </dl></details>
+    <details class="finish-category"><summary><span class="finish-number">11</span>Comfort, Technology &amp; Services</summary><dl>
+      <div class="finish-row"><dt>CLIMATE</dt><dd>Daikin ducted reverse-cycle air conditioning with zone control</dd></div>
+      <div class="finish-row"><dt>HOT WATER</dt><dd>Rinnai continuous-flow gas hot water</dd></div>
+      <div class="finish-row"><dt>INTERCOM</dt><dd>Video intercom (Dahua)</dd></div>
+      <div class="finish-row"><dt>ELECTRICAL</dt><dd>Slimline matt white switches (Hager), USB-C power outlets and weatherproof external power</dd></div>
+      <div class="finish-row"><dt>LIGHTING</dt><dd>LED downlights throughout, with façade, garden and landscape lighting</dd></div>
+      <div class="finish-row"><dt>EV READY</dt><dd>Provision for an electric vehicle charger</dd></div>
+      <div class="finish-row"><dt>WATER</dt><dd>Rainwater tank with pump and garden irrigation system</dd></div>
+      <div class="finish-row"><dt>SAFETY</dt><dd>Hard-wired photoelectric smoke alarms with battery back-up</dd></div>
+    </dl></details>
+  </div>
+  <p class="schedule-note">This schedule is a general guide to the finishes and inclusions intended for both residences and is provided for information only. It does not form part of any contract of sale unless expressly included. Images are indicative and natural materials such as stone, timber and plaster will vary in colour, veining and texture. The vendor reserves the right to substitute any item with one of equal or better quality where a product is unavailable or a design change is required. Purchasers should rely on their own enquiries and the contract documents.</p>
+</div>
+</section>
 
 <!-- FLOORPLANS -->
 <section class="section-alt">
