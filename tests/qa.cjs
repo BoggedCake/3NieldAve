@@ -9,7 +9,7 @@ const { createHash } = require('node:crypto');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
 const reference = JSON.parse(fs.readFileSync(path.join(root, 'docs/reference/finishes-reference.json')));
-const baseline = execFileSync('git', ['show', '4bbae04:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
+const baseline = execFileSync('git', ['show', 'c0a6ee1:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
 const current = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const output = process.env.FERN_QA_OUTPUT || '/tmp/fern-qa';
 fs.mkdirSync(output, { recursive: true });
@@ -62,6 +62,17 @@ async function run() {
       const logoSource = await page.locator('img.shore-logo').getAttribute('src');
       assert.ok(logoSource.startsWith('data:image/jpeg;base64,'), 'The exact logo must also work in HTML-only previews');
       assert.equal(createHash('sha256').update(Buffer.from(logoSource.split(',')[1], 'base64')).digest('hex'), checksums['shore-logo.jpg']);
+      assert.equal(await page.locator('.shore-logo-panel .shore-logo').count(), 1, 'SHORE artwork must sit inside a deliberate inset panel');
+      const brandPresentation = await page.evaluate(() => {
+        const panel = document.querySelector('.shore-logo-panel'), logo = document.querySelector('.johinke-logo');
+        return {panelBackground:getComputedStyle(panel).backgroundColor, panelPadding:parseFloat(getComputedStyle(panel).paddingLeft), tileBackground:getComputedStyle(panel.closest('.partner-card')).backgroundColor, johinkeFilter:getComputedStyle(logo).filter, johinkeVisibleWidth:document.querySelector('.johinke-mark').getBoundingClientRect().width};
+      });
+      assert.equal(brandPresentation.tileBackground, 'rgb(17, 17, 17)');
+      assert.equal(brandPresentation.panelBackground, 'rgb(255, 255, 255)');
+      assert.ok(brandPresentation.panelPadding >= 20, 'Inset panel needs intentional whitespace');
+      assert.equal(brandPresentation.johinkeFilter, 'none', 'Original white Johinke artwork must remain legible');
+      const previousJohinkeWidth = await before.locator('img[alt="Johinke Developments"]').evaluate(i => i.getBoundingClientRect().width * 744 / 1004);
+      assert.ok(brandPresentation.johinkeVisibleWidth >= previousJohinkeWidth * 2.5, 'Johinke lettering must be materially larger');
       assert.equal(await page.locator('#materials details').count(), 11, 'All eleven schedule categories must be accessible');
       assert.equal(normalize(await page.locator('.schedule-note').innerText()), disclaimer, 'Exact builder disclaimer must remain accessible');
       const summaries = await page.locator('#materials summary').allTextContents();

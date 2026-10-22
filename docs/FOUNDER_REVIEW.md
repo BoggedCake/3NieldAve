@@ -1,6 +1,14 @@
 # Founder review revisions
 
-Continues draft PR #1 on `feat/fern-finishes-shore`, using commit `4bbae04` as the approved implementation baseline. No IM rebuild, floorplan change, merge or live deployment.
+Continues draft PR #1 on `feat/fern-finishes-shore`. The latest partner-presentation pass uses commit `c0a6ee1` as its baseline. No IM rebuild, floorplan change, merge or live deployment.
+
+## Partner presentation refinement
+
+The SHORE Projects tile retains its `#111` background. Its exact supplied JPEG sits inside a white inset panel, with 26px vertical / 28px horizontal padding and a restrained maximum panel width of 380px. The artwork is not recoloured or recreated. The logo spaces in both tiles share a 190px minimum height so the brand presentations and following copy align as a pair on desktop.
+
+The embedded Johinke Developments PNG is unchanged. Its previous `filter:invert(1)` turned the original white lettering black, and a 72px-tall image box included extensive transparent margins. The new treatment removes that inversion and uses CSS to hide only those transparent margins. Visible lettering is now up to 360px wide, approximately four times its former visible width, while retaining the original artwork and aspect ratio. Mobile tiles stack with matching whitespace and no overflow.
+
+Partner presentation results are in `docs/qa/partner-results.json`, with representative [desktop](qa/partner-1440.png) and [mobile](qa/partner-375.png) screenshots. Checks assert the black builder tile, white inset, padding, original SHORE artwork checksum, legible original Johinke artwork and a visible Johinke mark at least 2.5 times larger at every tested width. The existing PDF, Q2 2027, SHORE Projects wording, all 75 finishes, image framing and plan checks remain active.
 
 ## Logo and PDF diagnosis
 
@@ -20,7 +28,7 @@ The cover statistic, executive-summary statistic and construction paragraph now 
 
 ## Headshot — awaiting usable source file
 
-The requested photo is visible in the conversation, but this turn supplied no downloadable file identifier or workspace image for it. The attachment directories contain the earlier schedule, brief and ZIP assets; none contains the new headshot. The exact JPEG/PNG has been requested. No substitute, generated portrait or broken placeholder has been added. The existing footer and contact details are preserved pending that file.
+The requested photo is visible in the earlier conversation, and the latest request names `FERN_Chris_Lewis_Headshot.jpg`, but neither message supplies a downloadable file identifier or workspace image for it. The attachment directories contain the earlier schedule, brief and ZIP assets; neither the current checkout nor fetched remote branch contains the headshot. The exact JPEG/PNG has been requested. No substitute, generated portrait or broken placeholder has been added. The existing footer and contact details are preserved pending that file.
 
 When supplied, add the exact image to the existing agent contact area at a restrained portrait size, using CSS cropping and responsive spacing. Re-run the six-width checks, capture the contact area and update this report before claiming the headshot requirement complete.
 
