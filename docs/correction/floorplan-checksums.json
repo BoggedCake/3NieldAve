@@ -1,0 +1,16 @@
+{
+  "2d": {
+    "filename": "FERN_2D_Floorplan_Exact.png",
+    "sha256": "2d658bcc3a7f75187ea3f918cc23a90132c21a66c9842142c68636f28c8506bb",
+    "bytes": 315578,
+    "width": 1920,
+    "height": 1280
+  },
+  "3d": {
+    "filename": "FERN_3D_Floorplan_Exact.png",
+    "sha256": "366cd4450af8277116f961b535dff037c96b804498570030b800b9dcee062d63",
+    "bytes": 823837,
+    "width": 1920,
+    "height": 1280
+  }
+}

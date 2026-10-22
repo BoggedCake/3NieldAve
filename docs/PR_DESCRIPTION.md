@@ -1,16 +1,15 @@
-Latest founder refinement: restore the blended hero only. Desktop uses a continuous horizontal render-to-navy fade; mobile layers the clear logo/opportunity label over the render and fades into readable details. All approved gallery styles, markup, ordering and downstream content are byte-identical to `e07735c`. Six-width hero checks and source-preservation assertions pass, with actual [before/after screenshots and QA](docs/hero/QA.md). No merge or deployment.
+# Preserve FERN architecture and use the approved floorplans
 
-# Preserve architectural compositions across phone, tablet and ultrawide
+The responsive editorial gallery preserves complete architectural frames across phone, tablet and ultrawide. The final correction embeds the exact approved 2D and 3D PNGs and replaces the fixed-width hero overlay with image-relative transparency masks: horizontal on desktop, vertical on mobile. Neither architectural image masters nor supplied floorplan pixels are modified.
 
-The previous fixed-height collage cropped architectural subjects as the browser widened. The opening blends the exterior render into a shared navy hero, and a curated gallery presents complete native image compositions with varied, controlled widths. Living leads; Kitchen/Family and Entry/Dining establish room connections; Bedroom and a restrained bathroom pair complete the sequence. Tablet rebalances the arrival pair, while mobile gives landscapes prominence and keeps portrait details modest.
+Both sheets contain every floor, so the established styled tabs and unchanged switching script now select 2D Floorplan / 3D Floorplan. All three existing floor descriptions and residence tables remain. The approved 2D label is Living/Lounge; both numerical internal/external note blocks are absent. Old embedded plan payloads are removed, and the exact new bytes are self-contained in the HTML with no image-path cache dependency.
 
-All original embedded image bytes, floorplan markup/functionality, property information, Q2 2027 timing, SHORE Projects artwork/wording, Johinke logo treatment, Chris Lewis portrait/contact section, eleven finishes categories, 75 inclusions, working PDF and legal copy are preserved. The self-contained HTML preview remains usable without sibling assets. Architectural images reserve native dimensions and use lazy loading; embedded transfer size is not reduced.
+Preserved: approved gallery imagery/order/styles, SHORE Projects and Johinke branding, agent portrait/footer, eleven finishes categories and all 75 entries, working PDF, Landscaping & Pool wording, Q2 2027 timing, property and legal copy.
 
-Validation: Chromium passed at 375, 390, 430, 768, 1024, 1440, 1920 and 2560px, plus 19 continuous resize samples. Checks cover native frame geometry and ancestor clipping, decoding, overflow, exact source image preservation, commercial copy, logos/headshot, finishes, print, PDF and all plan tabs. Full-page before/after screenshots were captured at all eight widths and critically reviewed. An independent visual review found no remaining blockers.
+Validation: Chromium checks pass at 390, 430, 768, 1440, 1920 and 2560px, plus 19 continuous resize samples and print. Exact plan hashes, decoded native proportions, both tabs, old-payload removal, image clipping/overflow, contacts, PDF and finishes pass. Actual hero PNG pixels meet navy at the image boundary within 0–1 RGB levels, including an expanded 900px hero. Local rendered hero and plan screenshots are visually inspected separately from automated results.
 
-- [Current QA and desktop/mobile before-and-after screenshots](docs/editorial/QA.md)
-- [Image presentation audit](docs/editorial/IMAGE_AUDIT.md)
-- [Machine results](docs/editorial/results.json)
-- [Original reconciliation and implementation record](docs/IMPLEMENTATION.md)
+- [Current correction QA and actual screenshots](docs/correction/QA.md)
+- [Exact approved plan hashes](docs/correction/floorplan-checksums.json)
+- [Approved editorial image audit](docs/editorial/IMAGE_AUDIT.md)
 
-Hosted Preview remains blocked: the supplied Vercel URL fails with proxy CONNECT 403 and this environment has no authenticated Vercel deployment capability. The older integration's deployment target cannot be verified. `[skip vercel]` prevents automatic deployment with an unverified target; updated code, a standalone HTML review artifact and actual screenshots are delivered. No Production/alias, Netlify or SitePivot changes were made. Keep this PR in draft for founder review; do not merge.
+The branch push intentionally has no deployment skip directive. The latest Vercel Preview identifier/status and any remaining live-browser access restriction are recorded in the PR update. Local testing is not presented as live visual verification. Keep PR #1 in draft for founder review; do not merge or deploy to Production.

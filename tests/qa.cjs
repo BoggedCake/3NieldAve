@@ -9,7 +9,7 @@ const { createHash } = require('node:crypto');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
 const reference = JSON.parse(fs.readFileSync(path.join(root, 'docs/reference/finishes-reference.json')));
-const baseline = execFileSync('git', ['show', 'bb4f7b1:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
+const baseline = execFileSync('git', ['show', '24c0837:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
 const current = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const output = process.env.FERN_QA_OUTPUT || '/tmp/fern-qa';
 fs.mkdirSync(output, { recursive: true });
@@ -21,7 +21,14 @@ async function run() {
   const disclaimer = normalize(fs.readFileSync(path.join(root, 'docs/reference/finishes-extracted.txt'), 'utf8').split('PLEASE NOTE')[1].split('DESIGNED & BUILT BY')[0]);
   // Protect complete plan markup, source images, captions, tables, and interaction code.
   const floorplans = s => s.split('<!-- FLOORPLANS -->')[1].split('<!-- COMPARABLE SALES -->')[0];
-  assert.equal(floorplans(current), floorplans(baseline), 'Published floorplans and area tables must remain byte-identical');
+  const withoutViewer=s=>s.replace(/  <div class="fp-tab-bar">[\s\S]*?(?=  <div style="margin-top:44px;">)/,'');
+  assert.equal(withoutViewer(floorplans(current)), withoutViewer(floorplans(baseline)), 'Floorplan heading, specifications and area tables must remain exact');
+  const approvedPlans=JSON.parse(fs.readFileSync(path.join(root,'docs/correction/floorplan-checksums.json')));
+  for(const kind of ['2d','3d']) {
+    const src=current.split(`id="fp-${kind}"`)[1].match(/src="data:image\/png;base64,([^"]+)"/)[1];
+    assert.equal(createHash('sha256').update(Buffer.from(src,'base64')).digest('hex'),approvedPlans[kind].sha256,'Exact approved '+kind+' bytes');
+  }
+  for(const old of floorplans(baseline).matchAll(/src="(data:image[^"]+)"/g))assert.ok(!current.includes(old[1]),'Superseded plan must be disconnected');
   assert.equal(current.split('<script>')[1].split('</script>')[0], baseline.split('<script>')[1].split('</script>')[0], 'Existing floorplan interaction must be preserved');
   const server = http.createServer((req, res) => {
     if (req.url === '/__baseline') return res.end(baseline);
@@ -130,7 +137,7 @@ async function run() {
         const image = new Image(); image.src = getComputedStyle(document.querySelector('.cover-bg')).backgroundImage.slice(5, -2); await image.decode();
         return [...document.images].map(i => ({ alt: i.alt, src: i.getAttribute('src'), width: i.naturalWidth }));
       });
-      const originalImages = await before.locator('img:not(.shore-logo)').evaluateAll(imgs => imgs.map(i => ({alt:i.alt, src:i.getAttribute('src')})));
+      const originalImages = await before.locator('img:not(.shore-logo):not(.fp-img)').evaluateAll(imgs => imgs.map(i => ({alt:i.alt, src:i.getAttribute('src')})));
       for (const image of originalImages) assert.ok(images.some(i => i.alt === image.alt && i.src === image.src), `Original image preserved: ${image.alt}`);
       assert.equal(await page.locator('.cover-stat-value').last().innerText(), 'Q2 2027');
       const bodyText = await page.locator('body').innerText();
@@ -147,7 +154,7 @@ async function run() {
       }));
       assert.equal(architecture.length,9);
       for(const image of architecture){assert.ok(Math.abs(image.ratio-image.native)<0.005,`Complete uncropped composition: ${image.alt}`);assert.equal(image.fit,'contain');assert.equal(image.clipped,false);assert.ok(image.within);assert.ok(image.width<=1360);}
-      assert.ok(await page.locator('.cover-bg').evaluate(e=>getComputedStyle(e,'::after').backgroundImage.includes('linear-gradient') && e.getBoundingClientRect().top===document.querySelector('.cover').getBoundingClientRect().top),'Hero must blend the shared architectural backdrop into navy');
+      assert.ok(await page.locator('.cover-bg').evaluate(e=>getComputedStyle(e).maskImage.includes('linear-gradient') && e.getBoundingClientRect().top===document.querySelector('.cover').getBoundingClientRect().top),'Hero must blend the shared architectural backdrop into navy');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Horizontal overflow at ${width}`);
       const contrast = await page.locator('#materials .eyebrow, .finish-number, .finish-row dt, .schedule-note').evaluateAll(elements => elements.map(e => {
         const rgb = getComputedStyle(e).color.match(/[\d.]+/g).slice(0,3).map(Number).map(c => {c /= 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;});
@@ -175,16 +182,20 @@ async function run() {
       await popup.waitForURL(pdfUrl);
       assert.equal(popup.url(), pdfUrl, 'Click must reach the direct PDF in a new tab');
       await popup.close();
-      for (const [i, id] of ['basement', 'ground', 'first'].entries()) {
+      for (const [i, id] of ['2d', '3d'].entries()) {
         await page.locator('.fp-tab').nth(i).click();
         assert.equal(await page.locator('.fp-panel.active').getAttribute('id'), 'fp-' + id);
         assert.equal(await page.locator('.fp-panel:visible').count(), 1);
+        const plan=page.locator('.fp-panel.active .fp-img');
+        await plan.evaluate(i=>i.decode());
+        assert.ok(await plan.evaluate(i=>{const r=i.getBoundingClientRect();return i.complete&&i.naturalWidth===1920&&i.naturalHeight===1280&&Math.abs(r.width/r.height-1.5)<0.005;}),'New plan must decode and preserve native proportions');
+        await page.locator('.fp-panel.active').screenshot({path:path.join(output,`floorplan-${id}-${width}.png`)});
       }
       await page.locator('.fp-tab').first().click();
       // Protect unchanged section geometry/text; raw before/after images below
       // document the intentionally redesigned gallery without synthetic isolation.
       let unchanged = 0;
-      for (const selector of ['.stat-grid', '#materials .section-inner', 'section:has(.fp-tab-bar) .section-inner', '.comp-grid', 'section:has(.location-grid) .section-inner']) {
+      for (const selector of ['.stat-grid', '#materials .section-inner', 'section:has(.fp-tab-bar) .two-col', '.comp-grid', 'section:has(.location-grid) .section-inner']) {
         const originalBox = await before.locator(selector).boundingBox(), currentBox = await page.locator(selector).boundingBox();
         assert.equal(currentBox.width, originalBox.width, `Preserved section width: ${selector}`);
         assert.equal(currentBox.height, originalBox.height, `Preserved section height: ${selector}`);
@@ -211,7 +222,7 @@ async function run() {
         for(const resizeWidth of [375,400,600,601,767,768,900,1023,1024,1150,1279,1280,1439,1440,1600,1680,1920,2240,2560]) {
           await page.setViewportSize({width:resizeWidth,height:1000});
           await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-          const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,complete:[...document.querySelectorAll('.editorial-gallery img,.harbour-feature img')].every(i=>{const r=i.getBoundingClientRect();return Math.abs(r.width/r.height-i.naturalWidth/i.naturalHeight)<0.005;}),exterior:getComputedStyle(document.querySelector('.cover-bg'),'::after').backgroundImage.includes('linear-gradient')}));
+          const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,complete:[...document.querySelectorAll('.editorial-gallery img,.harbour-feature img')].every(i=>{const r=i.getBoundingClientRect();return Math.abs(r.width/r.height-i.naturalWidth/i.naturalHeight)<0.005;}),exterior:getComputedStyle(document.querySelector('.cover-bg')).maskImage.includes('linear-gradient')}));
           assert.deepEqual(state,{overflow:false,complete:true,exterior:true},`Continuous resize at ${resizeWidth}`);resizing.push({width:resizeWidth,...state});
         }
         fs.writeFileSync(path.join(output,'resize-results.json'),JSON.stringify(resizing,null,2));
