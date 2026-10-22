@@ -1,5 +1,7 @@
 # FERN QA evidence
 
+This is the initial implementation's QA record. See [founder review revisions](FOUNDER_REVIEW.md) and `qa/founder-results.json` for subsequent asset-loading, naming and Q2 2027 checks against the approved PR baseline.
+
 Browser validation passed at all requested widths using Chromium and the actual Poppins fonts. The saved results are in [qa/results.json](qa/results.json).
 
 | Width | Categories / inclusions | Images decoded | Preserved visual regions | Page errors | Application request failures |

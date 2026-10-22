@@ -9,7 +9,7 @@ const { createHash } = require('node:crypto');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
 const reference = JSON.parse(fs.readFileSync(path.join(root, 'docs/reference/finishes-reference.json')));
-const baseline = execFileSync('git', ['show', 'd01a4d0:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
+const baseline = execFileSync('git', ['show', '4bbae04:index.html'], { cwd: root, maxBuffer: 10e6 }).toString();
 const current = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const output = process.env.FERN_QA_OUTPUT || '/tmp/fern-qa';
 fs.mkdirSync(output, { recursive: true });
@@ -25,6 +25,7 @@ async function run() {
   assert.equal(current.split('<script>')[1].split('</script>')[0], baseline.split('<script>')[1].split('</script>')[0], 'Existing floorplan interaction must be preserved');
   const server = http.createServer((req, res) => {
     if (req.url === '/__baseline') return res.end(baseline);
+    if (req.url === '/__standalone/preview.html') { res.setHeader('Content-Type', 'text/html; charset=utf-8'); return res.end(current); }
     const filename = path.resolve(root, '.' + decodeURIComponent(req.url.split('?')[0] === '/' ? '/index.html' : req.url.split('?')[0]));
     if (!filename.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
     try {
@@ -55,9 +56,12 @@ async function run() {
       page.on('pageerror', e => errors.push(e.message));
       page.on('requestfailed', r => failedRequests.push({ url: r.url(), error: r.failure()?.errorText }));
       await before.goto(url + '/__baseline', { waitUntil: 'networkidle' });
-      await page.goto(url, { waitUntil: 'networkidle' });
+      await page.goto(url + '/__standalone/preview.html', { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.locator('img.shore-logo').count(), 1, 'Official supplied SHORE artwork must replace the text approximation');
+      const logoSource = await page.locator('img.shore-logo').getAttribute('src');
+      assert.ok(logoSource.startsWith('data:image/jpeg;base64,'), 'The exact logo must also work in HTML-only previews');
+      assert.equal(createHash('sha256').update(Buffer.from(logoSource.split(',')[1], 'base64')).digest('hex'), checksums['shore-logo.jpg']);
       assert.equal(await page.locator('#materials details').count(), 11, 'All eleven schedule categories must be accessible');
       assert.equal(normalize(await page.locator('.schedule-note').innerText()), disclaimer, 'Exact builder disclaimer must remain accessible');
       const summaries = await page.locator('#materials summary').allTextContents();
@@ -80,9 +84,13 @@ async function run() {
         const image = new Image(); image.src = getComputedStyle(document.querySelector('.cover-bg')).backgroundImage.slice(5, -2); await image.decode();
         return [...document.images].map(i => ({ alt: i.alt, src: i.getAttribute('src'), width: i.naturalWidth }));
       });
-      const originalImages = await before.locator('img').evaluateAll(imgs => imgs.map(i => ({alt:i.alt, src:i.getAttribute('src')})));
+      const originalImages = await before.locator('img:not(.shore-logo)').evaluateAll(imgs => imgs.map(i => ({alt:i.alt, src:i.getAttribute('src')})));
       for (const image of originalImages) assert.ok(images.some(i => i.alt === image.alt && i.src === image.src), `Original image preserved: ${image.alt}`);
-      assert.equal(await page.locator('.cover-stat-value').last().innerText(), 'Q1 2027');
+      assert.equal(await page.locator('.cover-stat-value').last().innerText(), 'Q2 2027');
+      const bodyText = await page.locator('body').innerText();
+      assert.equal((bodyText.match(/Q2 2027/g) || []).length, 3, 'Cover, summary and body must all use Q2 2027');
+      assert.ok(!/Q1 2027|December 2026/.test(bodyText));
+      assert.equal((bodyText.match(/\bshore\b/gi) || []).length, (bodyText.match(/\bSHORE Projects\b/g) || []).length, 'Every visible builder reference must read SHORE Projects');
       assert.ok((await page.locator('.cover').innerText()).includes('FERN'));
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Horizontal overflow at ${width}`);
       const contrast = await page.locator('#materials .eyebrow, .finish-number, .finish-row dt, .schedule-note').evaluateAll(elements => elements.map(e => {
@@ -93,11 +101,24 @@ async function run() {
       assert.equal(await page.locator('.gallery-entry-dining').evaluate(e => [...e.querySelectorAll('img')].every(i => Math.abs(i.width / i.height - i.naturalWidth / i.naturalHeight) < 0.005 && i.getBoundingClientRect().bottom <= e.getBoundingClientRect().bottom + 1)), true, 'Entry and Dining must be uncropped, unstretched and contained');
       const links = await page.locator('a').evaluateAll(as => as.map(a => a.getAttribute('href')));
       const oldLinks = await before.locator('a').evaluateAll(as => as.map(a => a.getAttribute('href')));
-      for (const link of oldLinks) assert.ok(links.includes(link), `Existing contact/navigation link: ${link}`);
+      for (const link of oldLinks.filter(link => link !== 'assets/fern-finishes-inclusions.pdf')) assert.ok(links.includes(link), `Existing contact/navigation link: ${link}`);
       assert.ok(links.includes('tel:0431179861'));
       assert.ok(links.includes('mailto:chrislewis@stonerealestate.com.au'));
-      const pdf = await page.request.get(url + '/assets/fern-finishes-inclusions.pdf');
-      assert.equal(pdf.status(), 200); assert.ok((await pdf.body()).subarray(0,4).equals(Buffer.from('%PDF')));
+      const pdfLink = page.locator('.schedule-link');
+      assert.equal(await pdfLink.getAttribute('target'), '_blank', 'PDF opens in a clean separate tab');
+      assert.match(await pdfLink.getAttribute('rel'), /noopener/);
+      const pdfUrl = await pdfLink.getAttribute('href');
+      assert.match(pdfUrl, /^https:\/\/cdn\.jsdelivr\.net\/gh\/BoggedCake\/3NieldAve@[0-9a-f]{40}\/assets\/fern-finishes-inclusions\.pdf$/);
+      const pdfBytes = execFileSync('curl', ['--fail', '--silent', '--show-error', '--location', '--max-time', '30', pdfUrl], {maxBuffer:10e6});
+      assert.equal(createHash('sha256').update(pdfBytes).digest('hex'), checksums['fern-finishes-inclusions.pdf']);
+      // Use verified PDF bytes for Chromium's cloud proxy trust limitation.
+      await context.route(pdfUrl, route => route.fulfill({status:200, contentType:'application/pdf', body:pdfBytes}));
+      const popupPromise = context.waitForEvent('page');
+      await pdfLink.click();
+      const popup = await popupPromise;
+      await popup.waitForURL(pdfUrl);
+      assert.equal(popup.url(), pdfUrl, 'Click must reach the direct PDF in a new tab');
+      await popup.close();
       for (const [i, id] of ['basement', 'ground', 'first'].entries()) {
         await page.locator('.fp-tab').nth(i).click();
         assert.equal(await page.locator('.fp-panel.active').getAttribute('id'), 'fp-' + id);
@@ -116,7 +137,7 @@ async function run() {
         await locator.evaluate((e, style) => { if (style === null) e.removeAttribute('style'); else e.setAttribute('style', style); }, style);
         return capture;
       };
-      for (const selector of ['.gallery-hero', '.gallery-2-equal', '.gallery-bed-hero', '.gallery-2-pow-ens', 'section:has(.fp-tab-bar)', 'section:has(.comp-grid)', 'section:has(.location-grid)', '.footer-top', '.footer-disclaimer']) {
+      for (const selector of ['.gallery-hero', '.gallery-2-equal', '.gallery-entry-dining', '.gallery-bed-hero', '.gallery-2-pow-ens', '#materials', 'section:has(.fp-tab-bar)', '.comp-grid', 'section:has(.location-grid)']) {
         const originalBox = await before.locator(selector).boundingBox(), currentBox = await page.locator(selector).boundingBox();
         assert.equal(currentBox.width, originalBox.width, `Preserved section width: ${selector}`);
         assert.equal(currentBox.height, originalBox.height, `Preserved section height: ${selector}`);
@@ -136,6 +157,7 @@ async function run() {
       }
       await page.locator('#materials').screenshot({path:path.join(output, `materials-${width}.png`)});
       await page.locator('.partner-grid').screenshot({path:path.join(output, `partners-${width}.png`)});
+      await page.locator('.footer-top').screenshot({path:path.join(output, `contact-${width}.png`)});
       assert.deepEqual(errors, [], 'No JavaScript errors');
       assert.deepEqual(failedRequests.filter(r => !/fonts\.(googleapis|gstatic)\.com/.test(r.url)), [], 'No failed application asset requests');
       const metrics = await page.evaluate(() => ({fontLoaded:[...document.fonts].some(f => f.family === 'Poppins' && f.status === 'loaded'), domElements:document.querySelectorAll('*').length, loadMs:performance.getEntriesByType('navigation')[0].loadEventEnd}));

@@ -1,5 +1,7 @@
 # FERN finishes and builder feedback
 
+This document records the initial enhancement. See [founder review revisions](FOUNDER_REVIEW.md) for the subsequent Q2 2027 target, SHORE Projects naming and preview asset fixes; those revisions supersede the earlier timing and relative asset-link descriptions below.
+
 This enhancement uses the recovered live Netlify IM, not the older GitHub page. The unmodified live response is committed as `d01a4d07dfaf30372148bf64aef05ba4c08ff3ec`; see [source reconciliation](source-reconciliation.md). Q1 2027 completion, ground-floor bedrooms, the expanded gallery, builder/developer information and all original contact links are retained.
 
 ## Changes
