@@ -147,7 +147,7 @@ async function run() {
       }));
       assert.equal(architecture.length,9);
       for(const image of architecture){assert.ok(Math.abs(image.ratio-image.native)<0.005,`Complete uncropped composition: ${image.alt}`);assert.equal(image.fit,'contain');assert.equal(image.clipped,false);assert.ok(image.within);assert.ok(image.width<=1360);}
-      assert.ok(await page.locator('.cover-bg').evaluate(e=>Math.abs(e.clientWidth/e.clientHeight-1)<0.005 && getComputedStyle(e).backgroundSize==='contain' && getComputedStyle(e).opacity==='1'),'Square exterior must be shown completely');
+      assert.ok(await page.locator('.cover-bg').evaluate(e=>getComputedStyle(e,'::after').backgroundImage.includes('linear-gradient') && e.getBoundingClientRect().top===document.querySelector('.cover').getBoundingClientRect().top),'Hero must blend the shared architectural backdrop into navy');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Horizontal overflow at ${width}`);
       const contrast = await page.locator('#materials .eyebrow, .finish-number, .finish-row dt, .schedule-note').evaluateAll(elements => elements.map(e => {
         const rgb = getComputedStyle(e).color.match(/[\d.]+/g).slice(0,3).map(Number).map(c => {c /= 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;});
@@ -211,7 +211,7 @@ async function run() {
         for(const resizeWidth of [375,400,600,601,767,768,900,1023,1024,1150,1279,1280,1439,1440,1600,1680,1920,2240,2560]) {
           await page.setViewportSize({width:resizeWidth,height:1000});
           await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-          const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,complete:[...document.querySelectorAll('.editorial-gallery img,.harbour-feature img')].every(i=>{const r=i.getBoundingClientRect();return Math.abs(r.width/r.height-i.naturalWidth/i.naturalHeight)<0.005;}),exterior:Math.abs(document.querySelector('.cover-bg').clientWidth/document.querySelector('.cover-bg').clientHeight-1)<0.005}));
+          const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,complete:[...document.querySelectorAll('.editorial-gallery img,.harbour-feature img')].every(i=>{const r=i.getBoundingClientRect();return Math.abs(r.width/r.height-i.naturalWidth/i.naturalHeight)<0.005;}),exterior:getComputedStyle(document.querySelector('.cover-bg'),'::after').backgroundImage.includes('linear-gradient')}));
           assert.deepEqual(state,{overflow:false,complete:true,exterior:true},`Continuous resize at ${resizeWidth}`);resizing.push({width:resizeWidth,...state});
         }
         fs.writeFileSync(path.join(output,'resize-results.json'),JSON.stringify(resizing,null,2));
