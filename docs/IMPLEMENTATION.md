@@ -54,7 +54,7 @@ When approved real estate marketing floorplans arrive, locate these elements and
 
 - Doroch Architects is named in the brief but not verified by the supplied schedule. No architect credit has been invented. Confirm the architect against approved project documentation before adding one. The PDF footer itself says “Designed & Built By” SHORE; the IM avoids using that phrase to assign the architectural role.
 - The live IM's lift, cinema, gym/sauna, wine wall, gas fireplace, outdoor kitchen and harbour-view claims are retained. The finishes schedule does not independently document all these marketed features; obtain builder confirmation rather than treating their absence from the schedule as a reason to remove them.
-- Q1 2027 completion and basement-excavation status are retained from the live IM, not independently certified construction progress. Founder/builder should confirm that these remain current.
+- Q2 2027 completion and "Rooftop concrete pour completed" status (updated Nov 2026 per Chris Lewis, replacing "Basement excavation commenced") are as advised by the agent, not independently certified construction progress. Founder/builder should confirm that these remain current.
 - Existing comparable-sales statements and published area figures are preserved, not newly verified valuations or measurements.
 - Replacement marketing floorplans are still outstanding and intentionally excluded.
 
