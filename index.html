@@ -46,6 +46,37 @@
   .video-frame{position:relative;max-width:1040px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;background:#000;box-shadow:0 18px 48px rgba(57,68,86,0.18);}
   .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
 
+  /* BUILD JOURNAL */
+  .journal-section .section-header{max-width:720px;}
+  .journal-intro{margin-top:14px;color:var(--text-body);font-size:14px;line-height:1.8;}
+  .journal{position:relative;max-width:1120px;margin:0 auto;}
+  .journal::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:1px;background:rgba(57,68,86,0.2);}
+  .journal-entry{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start;padding:0 0 64px 44px;}
+  .journal-entry:last-child{padding-bottom:0;}
+  .journal-entry::before{content:"";position:absolute;left:0;top:10px;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--stone-teal);}
+  .journal-entry.is-latest::before{background:var(--stone-teal);box-shadow:0 0 0 5px rgba(0,185,190,0.15);}
+  .journal-stage{display:flex;align-items:center;gap:10px;font-weight:500;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone-teal);}
+  .journal-badge{font-size:9px;letter-spacing:0.16em;padding:3px 9px;border-radius:999px;background:var(--stone-teal);color:#fff;}
+  .journal-text h3{font-size:clamp(21px,2.2vw,26px);line-height:1.25;color:var(--stone-grey);margin:10px 0 12px;}
+  .journal-text{padding-top:6px;}
+  .journal-text p{color:var(--text-body);font-size:14px;line-height:1.8;}
+  .journal-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;box-shadow:0 14px 40px rgba(57,68,86,0.16);}
+  .journal-media iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  .yt-facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#000;display:block;}
+  .yt-facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;transition:opacity .25s,transform .6s;}
+  .yt-facade:hover img,.yt-facade:focus-visible img{opacity:1;transform:scale(1.02);}
+  .yt-play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(255,255,255,0.94);box-shadow:0 6px 24px rgba(0,0,0,0.28);transition:transform .2s;}
+  .yt-play::after{content:"";position:absolute;left:28px;top:22px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--stone-grey);}
+  .yt-facade:hover .yt-play,.yt-facade:focus-visible .yt-play{transform:scale(1.08);}
+  .yt-facade:focus-visible{outline:3px solid var(--stone-teal);outline-offset:3px;}
+  .journal-media.is-pending{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--stone-grey);color:#fff;text-align:center;padding:24px;}
+  .journal-media.is-pending .eyebrow{margin:0;}
+  .journal-media.is-pending span:last-child{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,2vw,22px);}
+  @media (max-width:760px){
+    .journal-entry{grid-template-columns:1fr;gap:18px;padding:0 0 48px 32px;}
+    .journal-text h3{margin:8px 0 8px;}
+  }
+
   /* STAT GRID */
   .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone-mid);border:1px solid var(--stone-mid);margin-bottom:44px;}
   .stat-cell{background:#fff;padding:22px 20px;text-align:center;}
@@ -349,6 +380,35 @@
   </div>
 </div>
 
+<!-- BUILD JOURNAL — newest stage carries .is-latest; add entries in order -->
+<section class="section-alt journal-section" id="build-journal" aria-labelledby="journal-title">
+<div class="section-inner">
+  <div class="section-header">
+    <span class="eyebrow">Build Journal</span>
+    <h2 id="journal-title">From vision to reality</h2>
+    <p class="journal-intro">Follow the construction of 3 Nield Avenue by SHORE Projects, from the architectural vision through each structural milestone on site. New updates are added as the build progresses.</p>
+  </div>
+  <div class="journal">
+  <article class="journal-entry">
+    <div class="journal-text"><span class="journal-stage">The Vision</span><h3>FERN, as designed</h3><p>Architectural renders of the finished residences — the design SHORE Projects is now bringing to life on site.</p></div>
+    <div class="journal-media"><button type="button" class="yt-facade" data-yt="3b2GDgTu4UI" aria-label="Play video: FERN architectural renders"><img class="yt-thumb" src="https://i.ytimg.com/vi/3b2GDgTu4UI/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/3b2GDgTu4UI/hqdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button></div>
+  </article>
+  <article class="journal-entry">
+    <div class="journal-text"><span class="journal-stage">Stage 01</span><h3>Ground floor concrete pour</h3><p>The ground floor slab is poured, setting the structural platform for both residences.</p></div>
+    <div class="journal-media"><button type="button" class="yt-facade" data-yt="Jig5zzlYsqY" aria-label="Play video: Ground floor concrete pour"><img class="yt-thumb" src="https://i.ytimg.com/vi/Jig5zzlYsqY/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/Jig5zzlYsqY/hqdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button></div>
+  </article>
+  <article class="journal-entry">
+    <div class="journal-text"><span class="journal-stage">Stage 02</span><h3>First floor concrete pour</h3><p>The first floor slab follows — the level that will hold the open-plan living, dining and kitchen.</p></div>
+    <div class="journal-media"><button type="button" class="yt-facade" data-yt="cfMlG7sVick" aria-label="Play video: First floor concrete pour"><img class="yt-thumb" src="https://i.ytimg.com/vi/cfMlG7sVick/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/cfMlG7sVick/hqdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button></div>
+  </article>
+  <article class="journal-entry is-latest">
+    <div class="journal-text"><span class="journal-stage">Stage 03<span class="journal-badge">Latest</span></span><h3>Rooftop concrete pour — topped out</h3><p>The rooftop concrete pour is complete and the structure has topped out.</p></div>
+    <div class="journal-media is-pending" role="img" aria-label="Top-out film coming soon"><span class="eyebrow">Film</span><span>Coming soon</span></div>
+  </article>
+  </div>
+</div>
+</section>
+
 <!-- MATERIALS, FINISHES & INCLUSIONS -->
 <section class="section-light" id="materials" aria-labelledby="materials-title">
 <div class="section-inner">
@@ -619,6 +679,27 @@ function showFP(name,tab){
   document.getElementById('fp-'+name).classList.add('active');
   tab.classList.add('active');
 }
+</script>
+<script>
+(function(){
+  document.querySelectorAll('img.yt-thumb').forEach(function(img){
+    function check(){ if(img.naturalWidth && img.naturalWidth<=120 && img.dataset.fallback){ img.src=img.dataset.fallback; img.removeAttribute('data-fallback'); } }
+    img.addEventListener('load',check);
+    img.addEventListener('error',function(){ if(img.dataset.fallback){ img.src=img.dataset.fallback; img.removeAttribute('data-fallback'); } });
+    if(img.complete) check();
+  });
+  document.querySelectorAll('.yt-facade').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0&playsinline=1';
+      f.title=btn.getAttribute('aria-label').replace('Play video: ','');
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.setAttribute('allowfullscreen','');
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      btn.replaceWith(f);
+    });
+  });
+})();
 </script>
 </body>
 </html>
